@@ -6,6 +6,8 @@
 npm install
 npm i express
 npm i dotenv
-npm install method-override
+npm i method-override
+npm i bcrypt
+npm i json-web-token
 
 ------------- For Client (FrontEnd)

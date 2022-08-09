@@ -8,8 +8,8 @@ const methodOverride = require('method-override')
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
-//app.use(express.static('public'))
-//app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 const mongoose = require('mongoose')
@@ -23,8 +23,8 @@ if (process.env.DEBUG==1) console.log("CONNECTING TO =" + process.env.MONGODB_UR
 
 
 // Controllers & Routes
-app.use('/', require('./controllers/users'))
-app.use('/', require('./controllers/flights'))
+app.use('/users', require('./controllers/users'))
+app.use('/flights', require('./controllers/flights'))
 
 
 if (process.env.DEBUG==1) console.log("Listening on Port " + process.env.PORT + " (set in your .env file)")
