@@ -1,8 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { faCalendarDays, faPerson, faPlane } from '@fortawesome/free-solid-svg-icons';
 import "./header.css";
-import { useState } from 'react';
+import { React, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDays, faPerson, faPlane } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -54,9 +53,11 @@ const Header = ({ type }) => {
             </div>
             { type !== "list" &&
                 <>
+                <div className="">
                 <h1 className="headerTitle">Sales pitch goes here. It's hard.</h1>
                 <p className="headerDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur placeat odio alias provident veniam maxime, porro dignissimos exercitationem suscipit magnam asperiores, cumque architecto consequuntur iure vel ut minima eius incidunt!</p>
                 <button className="headerButton">Sign in / Register</button>
+                </div>
                 <div className="headerSearch">
                     <div className="headerSearchItem">
                         <FontAwesomeIcon icon={faPlane} className="headerIcon" />
