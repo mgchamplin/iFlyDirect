@@ -1,0 +1,61 @@
+.styled-container{
+width: 100vw;
+height: 100vh;
+background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  ),
+  url("https://picsum.photos/1080/1920")
+    center;
+background-size: cover;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.styled-wrapper {
+width: 40%;
+padding: 20px;
+background-color: white;
+}
+
+.styled-title {
+font-size: 24px;
+font-weight: 300;
+display: flex;
+align-items: center;
+justify-content: space-between;
+text-decoration: none;
+}
+
+.styled-logo, a{
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.styled-form {
+display: flex;
+flex-wrap: wrap;
+}
+
+.styled-input {
+flex: 1;
+min-width: 40%;
+margin: 20px 10px 0px 0px;
+padding: 10px;
+}
+
+.styled-agreement {
+font-size: 12px;
+margin: 20px 0px;
+}
+
+.styled-button {
+width: 40%;
+border: none;
+padding: 15px 20px;
+background-color: teal;
+color: white;
+cursor: pointer;
+}
