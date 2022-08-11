@@ -54,7 +54,7 @@ const Header = ({ type }) => {
             { type !== "list" &&
                 <>
                 <div className="">
-                <h1 className="headerTitle">Sales pitch goes here. It's hard.</h1>
+                <h1 className="headerTitle">One stop shop for non-stop flights.</h1>
                 <p className="headerDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur placeat odio alias provident veniam maxime, porro dignissimos exercitationem suscipit magnam asperiores, cumque architecto consequuntur iure vel ut minima eius incidunt!</p>
                 <button className="headerButton">Sign in / Register</button>
                 </div>
