@@ -6,6 +6,22 @@ db.Location.create([
   {
     city: "Long Beach",
     airport: "Long Beach Airport",
+  },
+  {
+    city: "Los Angeles",
+    airport: "Los Angelese International Airport",
+  },
+  {
+    city: "Honolulu",
+    airport: "Daniel K. Inouye International Airport",
+  },
+  {
+    city: "Las Vegas",
+    airport: "Harry Reid International Airport",
+  },
+  {
+    city: "New York",
+    airport: "John F. Kennedy International Airport",
   }
 ]).then(() => {
     console.log("Success!");
