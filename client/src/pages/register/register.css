@@ -1,4 +1,4 @@
-.styled-container{
+.styled-container-register{
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -13,38 +13,43 @@
   background-size: cover;
 }
 
-.styled-wrapper{
+.styled-wrapper-register{
   width: 25%;
   padding: 20px;
   background-color: white;
   border-radius: 3.5px;
 }
 
-.styled-title{
+.styled-title-register{
   font-size: 24px;
   font-weight: 300;  
-}
-
-.styled-logo, a{
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   text-decoration: none;
 }
 
-.styled-form{
+.styled-logo-register, a{
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.styled-form-register{
   display: flex;
   flex-direction: column;
 }
 
-.styled-input{
+.styled-input-register{
   flex: 1;
   min-width: 40%;
   margin: 10px 0;
   padding: 10px;
 }
 
-.styled-button{
+.styled-button-register{
   width: 40%;
-  margin-bottom: 10px;
+  margin: 10px 0;
   padding: 10px;
   color: white;
   background-color: rgba(0, 128, 128, 0.9); 
@@ -52,15 +57,14 @@
   transition: 0.5sec ease;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: 500;
-  
+  font-weight: 500;  
 }
 
-.styled-button:hover{
+.styled-button-register:hover{
     background-color: #206060;
 }
 
-.styled-link{
+.styled-link-register{
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
