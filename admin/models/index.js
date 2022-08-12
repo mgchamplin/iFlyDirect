@@ -9,4 +9,4 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 module.exports.Location = require("./location");
 module.exports.Flight = require("./flight");
-module.exports.User    = require('./users')
+module.exports.User = require('./user');
