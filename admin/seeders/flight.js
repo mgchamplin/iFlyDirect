@@ -16,8 +16,8 @@ async function airport() {
     let from = allLocations[6];
     let adultPrice = Math.floor(Math.random() * 900) + 100;
     let childPrice = adultPrice * 0.7;
-    let departureDate = new Date(2022,8,15);
-    let arrivalDate = new Date(2022,8,16);
+    let departureDate = new Date();
+    departureDate.setDate(departureDate.getDate()+Math.floor(Math.random() * 30)+ 1);
     let roundTrip = false;
 
     let flight = db.Flight.create({
@@ -26,7 +26,6 @@ async function airport() {
         adultPrice: adultPrice,
         childPrice: childPrice,
         departureDate: departureDate,
-        arrivalDate: arrivalDate,
         roundTrip: roundTrip
     });
 };
