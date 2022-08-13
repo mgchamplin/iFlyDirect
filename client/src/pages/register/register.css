@@ -1,9 +1,4 @@
-.styled-container{
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.styled-container-register{
   background: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.7)
@@ -11,58 +6,60 @@
     url("https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80")
       center;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.styled-wrapper{
-  width: 25%;
-  padding: 20px;
-  background-color: white;
-  border-radius: 3.5px;
+.styled-wrapper-register{
+  width: 30%;
 }
 
-.styled-title{
-  font-size: 24px;
-  font-weight: 300;  
+.styled-title-register{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 95%;
 }
 
-.styled-logo, a{
+.styled-logo-register, a{
   font-weight: bold;
   text-decoration: none;
+  font-size: 30px;
 }
 
-.styled-form{
+.styled-form-register{
   display: flex;
   flex-direction: column;
 }
 
-.styled-input{
+.styled-input-register{
   flex: 1;
   min-width: 40%;
+  width: 90%;
+}
+
+.styled-agreement-register{
+  font-size: 12px;
+  margin: 10px 0px;
+}
+
+.styled-button-register{
+  width: 40%;
   margin: 10px 0;
   padding: 10px;
-}
-
-.styled-button{
-  width: 40%;
-  margin-bottom: 10px;
-  padding: 10px;
   color: white;
-  background-color: rgba(0, 128, 128, 0.9); 
-  border: 2px solid rgba(0, 128, 128, 1); 
-  transition: 0.5sec ease;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-  
+  font-weight: 500;  
 }
 
-.styled-button:hover{
+.styled-button-register:hover{
     background-color: #206060;
 }
 
-.styled-link{
+.styled-link-register{
   margin: 5px 0px;
   font-size: 12px;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
 }

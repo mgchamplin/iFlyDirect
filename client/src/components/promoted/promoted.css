@@ -1,0 +1,30 @@
+.promoted{
+    width: 100%;    
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: -1;
+}
+
+.promotedItem{
+    position: relative;
+    color: white;
+    border-radius: 7.5px;
+    overflow: hidden;
+    height: 250px;
+}
+
+.promotedTitles{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    bottom: -5px;
+    text-shadow: 8px 4px 8px #000000;
+    left: 10px;
+}
+
+.promotedImg{
+    width: 100%;
+    object-fit: cover;
+}

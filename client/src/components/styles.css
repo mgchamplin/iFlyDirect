@@ -1,33 +1,117 @@
+body{
+  background: linear-gradient(#F9ECE4, transparent, transparent, #EADFCE);
+  margin: 0;
+  padding: 0;
+}
+
 .transform-link {
-    text-decoration: none;
-    color: var(--background-primary);
-    position: relative;
-  }
-  
-  .transform-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 200ms ease-in;
-  }
-  
-  .transform-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-  
-  li{
-    list-style: none;
-  }
-  /*Buttons*/
-  /* button:focus {
-    outline: none;
-  } */
-  
-  
+  text-decoration: none;
+  color: var(--background-primary);
+  position: relative;
+}
+
+.transform-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 200ms ease-in;
+}
+
+.transform-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+li{
+  list-style: none;
+}
+/*Buttons*/
+/* button:focus {
+  outline: none;
+} */
+
+.styled-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url("https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80")
+      center;
+  background-size: cover;
+}
+
+.styled-wrapper{
+  width: 25%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 3.5px;
+}
+
+.styled-title{
+  font-size: 24px;
+  font-weight: 300;  
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.styled-logo, a{
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.styled-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.styled-input{
+  flex: 1;
+  min-width: 40%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.styled-button{
+  width: 40%;
+  margin: 10px 0;
+  padding: 10px;
+  color: white;
+  background-color: rgba(0, 128, 128, 0.9); 
+  border: 2px solid rgba(0, 128, 128, 1); 
+  transition: 0.5sec ease;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;  
+}
+
+.styled-button:hover{
+  background-color: #206060;
+}
+
+.styled-link{
+  margin: 5px 0px;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.grow { 
+  transition: all .25s ease-in-out; 
+}
+
+.grow:hover { 
+  transform: scale(1.1); 
+}
