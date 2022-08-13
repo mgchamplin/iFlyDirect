@@ -4,7 +4,7 @@
   }
 
 .footer-container {
-    background: #EADFCE;
+  background: linear-gradient(transparent, transparent, #EADFCE);
     padding-top: 1em;
     opacity: 1;
     color: #6e6e73;

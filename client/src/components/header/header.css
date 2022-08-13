@@ -1,5 +1,6 @@
 .header{
     background-color: #199FB1;
+    background: linear-gradient(#199FB1, #199FB1 ,transparent);
     /* background-image: url(https://picsum.photos/2000/350); */
     color: white;
     display: flex;
@@ -16,7 +17,7 @@
 
 /* if type === list then adjust below */
 .headerContainer.listMode {    
-    margin:  20px 0px 40px 0px;
+    margin:  20px 0px 60px 0px;
 }
 
 .headerList {
