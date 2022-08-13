@@ -2,10 +2,18 @@
     font-family: 'Urbanist', sans-serif;
 }
 
-.home-container{
-    margin: 40px 0px 10px;
+.homeContainer{
+    margin: 40px 0px 10px;    
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px
+}
+
+
+.domesticTitle{
+    width: 100%;
+    max-width: 1200px;
+    font: 1.5em sans-serif;
+    font-weight: bold;    
 }

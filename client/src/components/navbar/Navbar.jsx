@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
         <div className="navContainer">
-            <span className="logo">iFlyDirect</span>
+            <span className="logo"><Link to="/" className='logo' id='navLogo'>iFlyDirect</Link></span>
             <div className="navItems">
                 <Link to="/register"><button className="navButton">Register</button></Link>
                 <Link to="/login"><button className="navButton">Login</button></Link>
