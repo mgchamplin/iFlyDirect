@@ -19,7 +19,7 @@ function App() {
         <Route path='/flights' element={<List/>} />
         <Route path='/flights/:id' element={<Flight/>} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />        
       </Routes>
     </BrowserRouter>
 

@@ -8,13 +8,15 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
 
 const Header = ({ type }) => {
+    // useState to make sure calendar component isn't displaying by default when page loads
     const [openCalendar, setOpenCalendar] = useState(false)
+    // set state with object array, date-fns library converts from javascript dates to readable strings. 
     const [date, setDate] = useState([
         {
           startDate: new Date(),
           endDate: new Date(),
           key: 'selection'
-        }
+        }, 
       ]);
     
     const [openGuests, setOpenGuests] = useState(false);
@@ -24,9 +26,11 @@ const Header = ({ type }) => {
         infants: 0,
     });
 
+    // function for adjusting qty
     const handleGuest = (name, operation) =>
     setGuests((prev) => {
         return {
+            // finds previous state, then finds name inside the object, then ++ if condition matches name 'incr', if not then --
             ...prev, 
             [name]: operation === 'incr' ? guests[name] ++ : guests[name] --,
         };
@@ -36,6 +40,7 @@ const Header = ({ type }) => {
 
   return (
     <div className="header">
+        {/* set condition for type to adjust style in css*/}
         <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
             <div className="headerList">                
                 <div className="headerListItem">
@@ -51,6 +56,7 @@ const Header = ({ type }) => {
                     <span>Multi-City</span>
                 </div>
             </div>
+            {/* {<></>} to create fragment and set type to !list so it doesn't display on results/List page */}
             { type !== "list" &&
                 <>
                 <div className="">
@@ -68,14 +74,16 @@ const Header = ({ type }) => {
                     <div className="headerSearchItem">
                         <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                         <span className='headerSearchText' 
+                        // onClick method for everytime span is clicked, state changes.
                         onClick={()=>setOpenCalendar(!openCalendar)}> 
-                        {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
-                        </span> 
                         {/* MM has to be capitalized otherwise it reflects minutes... */}
-                        {/* && for is true */}
+                        {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
+                        </span>                         
+                        {/* invoke useState conditions for openCalendar && for is true*/}
                         {openCalendar && <DateRange
                             className='dateCalender'
                             editableDateInputs={true}
+                            // setStateAction for onChange to update date when clicked
                             onChange={item => setDate([item.selection])}
                             moveRangeOnFirstSelection={false}
                             ranges={date}
@@ -86,6 +94,7 @@ const Header = ({ type }) => {
                         <span 
                         className='headerSearchText'
                         onClick={()=>setOpenGuests(!openGuests)}>
+                        {/* invoke state{} for guests and display following text with values from array */}
                         {`${guests.adults} adults | ${guests.children} children | ${guests.infants} infants`}</span>
                         {openGuests && <div className="guests">
                             <div className="guestItem">

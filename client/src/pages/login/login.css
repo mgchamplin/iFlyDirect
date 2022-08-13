@@ -1,6 +1,4 @@
 .styled-container-login {
-  width: 100vw;
-  height: 100vh;
   background: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
@@ -8,25 +6,17 @@
     url("https://images.unsplash.com/photo-1601754192553-fcc307b7710b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80")
       center;
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.styled-wrapper-login {
-  width: 40%;
-  padding: 20px;
-  background-color: white;
-  border-radius: 3.5px;
-}
-
-.styled-title-login{
+.styled-logo-login, h1 > a{
+  font-weight: bold;
   font-size: 24px;
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   text-decoration: none;
+  margin: 10px 0;  
+}
+
+.styled-logo-login, h1 {
+  margin: 0;
 }
 
 .styled-form-login {
@@ -37,47 +27,9 @@
   flex-direction: column;
 }
 
-.styled-input-login {
-  flex: 1;
-  min-width: 40%;
-  margin: 20px 10px 0px 0px;
-  padding: 10px;
-}
-
-.styled-agreement-login {
-  font-size: 12px;
-  margin: 20px 0px;
-}
-
-.styled-button-login {
-  width: 40%;
-  border: none;
-  padding: 10px 15px;
-  margin: 20px 0;
-  color: white;
-  cursor: pointer;
-  background-color: rgba(0, 128, 128, 0.9); 
-  border: 2px solid rgba(0, 128, 128, 1); 
-  transition: 0.5sec ease;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;  
-}
-
-.styled-button-login:hover{
-  background-color: #206060;
-}
-
-.styled-link-login, a{
+.styled-form-login, a{
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
-}
-
-.styled-logo-login>a{
-  font-weight: bold;
-  font-size: 30px;
-  text-decoration: none;
-  margin-bottom: 0;
 }

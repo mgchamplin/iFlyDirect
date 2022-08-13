@@ -1,3 +1,11 @@
 * {
     font-family: 'Urbanist', sans-serif;
 }
+
+.home-container{
+    margin: 40px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px
+}

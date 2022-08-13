@@ -13,8 +13,9 @@
     margin:  30px 0px 100px 0px;
 }
 
+/* if type === list then adjust below */
 .headerContainer.listMode {    
-    margin:  20px 0px 10px 0px;
+    margin:  20px 0px 40px 0px;
 }
 
 .headerList {
