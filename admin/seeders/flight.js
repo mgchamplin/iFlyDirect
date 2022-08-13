@@ -13,7 +13,7 @@ const db = require("../models");
 
 async function airport() {
     var allAirlines = await db.Airline.find();
-    let airline = allAirlines[2]
+    let airline = allAirlines[Math.floor(Math.random()*allAirlines.length)]
     
     var allLocations = await db.Location.find();
     let to = allLocations[Math.floor(Math.random()*allLocations.length)];
