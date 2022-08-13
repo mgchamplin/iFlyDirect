@@ -10,7 +10,7 @@ async function toAirport() {
             {
               from: allLocations[i],
               to: allLocations[i+1],
-              price: 300,
+              price: Math.floor(Math.random()*900)+100,
               date: new Date(),
               roundTrip: false
             }
@@ -26,14 +26,14 @@ async function toAirport() {
 };
 toAirport();
 
-//reverse for from airport
+//reverse for loop for from airport
 async function fromAirport() {
     for (let i = allLocations.length; i != 0; i--){
         db.Flight.create([
             {
               from: allLocations[i],
               to: allLocations[i-1],
-              price: 300,
+              price: Math.floor(Math.random()*900)+100,
               date: new Date(),
               roundTrip: false
             }
