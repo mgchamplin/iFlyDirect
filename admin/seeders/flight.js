@@ -20,15 +20,22 @@ async function airport() {
     departureDate.setDate(departureDate.getDate()+Math.floor(Math.random() * 30)+ 1);
     let roundTrip = Math.random() > 0.5 ? true : false;
 
-    let flight = db.Flight.create({
+    let flight = await db.Flight.create([
+        {
         from: from,
         to: to,
         adultPrice: adultPrice,
         childPrice: childPrice,
         departureDate: departureDate,
         roundTrip: roundTrip
-    });
-    process.exit();
+        }
+    ]).then(() => {
+        console.log("Success!");
+        process.exit(); //To close process
+      }).catch((err) => {
+        console.log("Failure!", err);
+        process.exit(); // To close process
+      });
 };
 
 airport();
