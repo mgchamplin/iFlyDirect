@@ -6,15 +6,17 @@ const flightSchema = new mongoose.Schema({
   from: { 
     type: mongoose.Schema.Types.ObjectId,
     ref:"Location",
-    require: true
+    required: true
   },
   to: { 
     type: mongoose.Schema.Types.ObjectId,
     ref:"Location",
-    require: true
+    required: true
   },
-  price: { type: Number, default: 200 },
-  date: { type: Date, require: true },
+  adultPrice: { type: Number, default: 200 },
+  childPrice: { type: Number, default: 150 },
+  departureDate: { type: Date, required: true },
+  returnDate: { type: Date },
   roundTrip: { type: Boolean, default: false }
 });
 

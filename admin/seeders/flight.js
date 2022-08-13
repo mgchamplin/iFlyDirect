@@ -1,67 +1,30 @@
 // require models folder to give CRUD access to database in models
 const db = require("../models");
 
+// Flight will be from LAX to London
+    // Find LAX location and set as from location
+    // Find London location and set as to location
+// Flights price will be $200
+// Flights departure date will be 8/15/22
+// Flights arrival date will be 8/16/22
+// Flight not a round trip
+// Create a flight
 
-var startDate = new Date("2022-8-17"); //YYYY-MM-DD
-var endDate = new Date("2022-9-15"); //YYYY-MM-DD
+async function airport() {
+    var allLocations = await db.Location.find();
+    let to = allLocations[1];
+    let from = allLocations[6];
+    let price = 200;
+    let departureDate = new Date(2022,8,15);
+    let arrivalDate = new Date(2022,8,16);
+    let roundTrip = false;
 
-// Create date array
-var getDateArray = function(start, end) {
-    var arr = new Array();
-    var dt = new Date(start);
-    while (dt <= end) {
-        arr.push(new Date(dt));
-        dt.setDate(dt.getDate() + 1);
-    }
-    return arr;
-}
-
-var dateArr = getDateArray(startDate, endDate);
-
-var allLocations = await db.Location.find();
-
-// create a new flight with create().
-async function toAirport() {
-    for (let i = 0; i < allLocations.length - 1; i++){
-        db.Flight.create([
-            {
-              from: allLocations[i],
-              to: allLocations[i+1],
-              price: Math.floor(Math.random()*900)+100,
-              date: dateArr,
-              roundTrip: false
-            }
-            
-          ]).then(() => {
-              console.log("Success!");
-              process.exit(); //To close process
-            }).catch((err) => {
-              console.log("Failure!", err);
-              process.exit(); // To close process
-            });
-    }
+    let flight = db.Flight.create({
+        from: from,
+        to: to,
+        price: price,
+        departureDate: departureDate,
+        arrivalDate: arrivalDate,
+        roundTrip: roundTrip
+    });
 };
-toAirport();
-
-//reverse for loop for from airport
-async function fromAirport() {
-    for (let i = allLocations.length; i != 0; i--){
-        db.Flight.create([
-            {
-              from: allLocations[i],
-              to: allLocations[i-1],
-              price: Math.floor(Math.random()*900)+100,
-              date: dateArr,
-              roundTrip: false
-            }
-            
-          ]).then(() => {
-              console.log("Success!");
-              process.exit(); //To close process
-            }).catch((err) => {
-              console.log("Failure!", err);
-              process.exit(); // To close process
-            });
-    }
-};
-fromAirport();
