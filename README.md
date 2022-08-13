@@ -1,12 +1,15 @@
-# iFlyDirect // Main Concept: 
+# iFlyDirect // Main Concept:
+
 - Non-stop flight booking app
 - Select from/to cities and dattes to find non-stop only flights
 - Possible DB: users, flights, etc
 
 ## Required packages
+
 ------------- For Admin (Backend)
 npm install
 npm i express
+npm i cors
 npm i dotenv
 npm i method-override
 npm i bcrypt
@@ -19,8 +22,8 @@ npm i @fortawesome/free-solid-svg-icons
 npm i react-date-range
 npm i date-fns
 
-
 ### Deliverables / MVP:
+
 - A link to your app, which is deployed somewhere.
 - A link to your GitHub repository (or repositories if there are multiple), so we can see the progress on your app.
 - Select to/from cities with a date range for round-trip
@@ -28,6 +31,7 @@ npm i date-fns
 ### Bonus Features:
 
 ### General Requirements:
+
 - This project cannot be part of a lab or assignment we've already done in class.
 - This project is group by default (no more than 4 people per group), but can be done individually if approved by instructor.
 - This project should feature user authentication (i.e., secure logins and passwords).
@@ -37,12 +41,12 @@ npm i date-fns
 - This app must be deployed somewhere.
 - The app should have a README.md file including what is referenced below in the application requirements.
 
-
 ### Project Requirements:
+
 This project is your choice. You will create an impressive application to add to your personal portfolio, but how you do that is up to you. It can be a group or individual project. Your project should center around your goals post-graduation and be a great addition to your personal portfolio website. What you do depends on what part of the industry you'd like to join, or what technologies you would like to work with. For example, front-end development, back-end development, fintech (financial technology), game development, and more.
 
-
 ### Application Requirements:
+
 - Your back-end uses Python or Node.
 - Your back-end uses Flask or Django (Python) or Express (Node).
 - Your front-end may use React, or another front-end framework (e.g., Vue, Angular), or a template language (EJS, Pug, Handlebars).
@@ -59,15 +63,10 @@ This project is your choice. You will create an impressive application to add to
 - - Describes how to use the application.
 - - Lists the technologies used to build the application.
 - - Addresses any outstanding bugs or unfinished functionality.
+
 #### Bonus Ideas
+
 - Use SASS for styling.
 - Create your project using TypeScript.
 - Use CircleCI for continuous integration.
 - Use at least one library, package, or technology that we haven't covered.
-
-
-
-
-
-
-
