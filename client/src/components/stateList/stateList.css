@@ -1,0 +1,47 @@
+.sList{
+    width: 100%;    
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: -1;
+    scroll-behavior: smooth;
+}
+
+.sListContainer {
+    display: flex;
+    width: 100%;
+    gap: 20px;    
+    /* scroll-snap-type: x mandatory;
+    scroll-snap-align: start; */
+    overflow-y: hidden;
+    overflow-x: scroll;    
+}
+
+.sListItem{
+    flex: 1;
+    position: relative;
+    color: white;
+    /* overflow: hidden; */
+}
+
+.sListTitles{
+    position: absolute;
+    width: 90%;
+    /* margin: 10%; */
+    padding: 0;
+    bottom: -5px;
+    text-shadow: 8px 4px 8px #000000;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.sListImg{
+    height: 175px;
+    width: 250px;
+    border-radius: 7.5px;
+    object-fit: cover;
+}
