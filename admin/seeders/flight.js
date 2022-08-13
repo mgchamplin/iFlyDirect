@@ -14,7 +14,8 @@ async function airport() {
     var allLocations = await db.Location.find();
     let to = allLocations[1];
     let from = allLocations[6];
-    let price = 200;
+    let adultPrice = Math.floor(Math.random() * 900) + 100;
+    let childPrice = adultPrice * 0.7;
     let departureDate = new Date(2022,8,15);
     let arrivalDate = new Date(2022,8,16);
     let roundTrip = false;
