@@ -1,7 +1,24 @@
 // require models folder to give CRUD access to database in models
 const db = require("../models");
 
-let allLocations = await db.Location.find();
+
+var startDate = new Date("2022-8-17"); //YYYY-MM-DD
+var endDate = new Date("2022-9-15"); //YYYY-MM-DD
+
+// Create date array
+var getDateArray = function(start, end) {
+    var arr = new Array();
+    var dt = new Date(start);
+    while (dt <= end) {
+        arr.push(new Date(dt));
+        dt.setDate(dt.getDate() + 1);
+    }
+    return arr;
+}
+
+var dateArr = getDateArray(startDate, endDate);
+
+var allLocations = await db.Location.find();
 
 // create a new flight with create().
 async function toAirport() {
@@ -11,7 +28,7 @@ async function toAirport() {
               from: allLocations[i],
               to: allLocations[i+1],
               price: Math.floor(Math.random()*900)+100,
-              date: new Date(),
+              date: dateArr,
               roundTrip: false
             }
             
@@ -34,7 +51,7 @@ async function fromAirport() {
               from: allLocations[i],
               to: allLocations[i-1],
               price: Math.floor(Math.random()*900)+100,
-              date: new Date(),
+              date: dateArr,
               roundTrip: false
             }
             
