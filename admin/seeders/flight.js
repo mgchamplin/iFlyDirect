@@ -18,7 +18,7 @@ async function airport() {
     let childPrice = adultPrice * 0.7;
     let departureDate = new Date();
     departureDate.setDate(departureDate.getDate()+Math.floor(Math.random() * 30)+ 1);
-    let roundTrip = false;
+    let roundTrip = Math.random() > 0.5 ? true : false;
 
     let flight = db.Flight.create({
         from: from,
