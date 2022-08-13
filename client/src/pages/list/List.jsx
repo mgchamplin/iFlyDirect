@@ -5,6 +5,7 @@ import Header from '../../components/header/Header'
 import Navbar from '../../components/navbar/Navbar'
 import "./list.css"
 import { DateRange } from 'react-date-range';
+import SearchResult from '../../components/searchResult/SearchResult';
 
 const List = () => {
   // useLocation hook returns the current location object. Performs some side effect whenever the current location changes.
@@ -62,18 +63,21 @@ const List = () => {
                   </div>
                   <div className="listOptionItem">
                     <span className="listOptionText"> Children </span>
-                    <input type="number" min={0} className='listOptionInput' placeholder={guests.children }/>
+                    <input type="number" min={0} className='listOptionInput' placeholder={guests.children}/>
                   </div>
                   <div className="listOptionItem">
                     <span className="listOptionText"> Infant(s) </span>
-                    <input type="number" min={0} className='listOptionInput' placeholder={guests.infants }/>
+                    <input type="number" min={0} className='listOptionInput' placeholder={guests.infants}/>
                   </div>
                 </div>
               </div>
               <button>Search</button>
-
             </div>
-            <div className="listResult"></div>
+            <div className="listResult">
+              <SearchResult />
+              <SearchResult />
+              <SearchResult />
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,78 @@
+.searchRes{
+    border: 1px solid lightgray;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.searchResDesc{
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.searchResItem{
+    display: flex;
+    flex-direction: column;
+}
+
+.searchResImg{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.searchResInfo{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.searchResInfo > h1{
+    position: absolute;
+    width: 100%;
+}
+
+.searchResInfo{
+    flex: 5;
+}
+
+.searchResCost{
+    flex: 1;
+    margin-top: 2rem;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.searchResDepart{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.searchResItem>span{
+    margin: 5px 0;
+}
+
+.searchResItem>h2{
+    font-size: large;
+}
+
+span.searchResCostNotAdultSubTitle,
+span.searchResCostAdultSubTitle{
+    font-size: x-small;
+    margin: 0;
+}
+
+.searchResItem>span>h2{
+    margin: 0;
+    font-size: x-large;
+}
