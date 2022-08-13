@@ -22,9 +22,12 @@ async function airport() {
     let flight = db.Flight.create({
         from: from,
         to: to,
-        price: price,
+        adultPrice: adultPrice,
+        childPrice: childPrice,
         departureDate: departureDate,
         arrivalDate: arrivalDate,
         roundTrip: roundTrip
     });
 };
+
+airport();
