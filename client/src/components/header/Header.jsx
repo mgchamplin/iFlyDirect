@@ -6,8 +6,10 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ type }) => {
+    const [destination, setDestination] = useState("")
     // useState to make sure calendar component isn't displaying by default when page loads
     const [openCalendar, setOpenCalendar] = useState(false)
     // set state with object array, date-fns library converts from javascript dates to readable strings. 
@@ -27,16 +29,23 @@ const Header = ({ type }) => {
     });
 
     // function for adjusting qty
-    const handleGuest = (name, operation) =>
-    setGuests((prev) => {
-        return {
-            // finds previous state, then finds name inside the object, then ++ if condition matches name 'incr', if not then --
-            ...prev, 
-            [name]: operation === 'incr' ? guests[name] ++ : guests[name] --,
-        };
-    });
-// };
-    // previous condition, name inside an array to find name inside object followed by condition which will find the object when the name is pulled.
+    const handleGuest = (name, operation) => {
+        setGuests((prev) => {
+            return {                
+                // previous condition, locates name inside an array to find name inside object followed by condition which will find the object when the name is pulled. ++ if condition matches name 'incr', if not then --
+                ...prev, 
+                [name]: operation === 'incr' ? guests[name] ++ : guests[name] --,
+            };
+        });
+    };
+
+    //react-router-dom navigate allows redirect of any component on any page
+    const navigate = useNavigate ()
+
+    //shove changes to /flights(<List />)
+    const handleSearch = () => {
+        navigate("/flights", {state:{ destination,date,guests }})
+    }
 
   return (
     <div className="header">
@@ -67,7 +76,12 @@ const Header = ({ type }) => {
                 <div className="headerSearch">
                     <div className="headerSearchItem">
                         <FontAwesomeIcon icon={faPlane} className="headerIcon" />
-                        <input type="text" placeholder='Leaving from' className='headerSearchInput' />
+                        <input type="text" 
+                        placeholder='Leaving from' 
+                        className='headerSearchInput'
+                        // when changed, update value on results List. 
+                        onChange={e=>setDestination(e.target.value)}
+                        />
                         <FontAwesomeIcon icon={faPlane} className="headerIcon" />
                         <input type="text" placeholder='Going to' className='headerSearchInput' />
                     </div>
@@ -80,14 +94,18 @@ const Header = ({ type }) => {
                         {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
                         </span>                         
                         {/* invoke useState conditions for openCalendar && for is true*/}
-                        {openCalendar && <DateRange
-                            className='dateCalender'
-                            editableDateInputs={true}
-                            // setStateAction for onChange to update date when clicked
-                            onChange={item => setDate([item.selection])}
-                            moveRangeOnFirstSelection={false}
-                            ranges={date}
-                            />}
+                        {openCalendar &&  (
+                            <DateRange
+                                className='dateCalender'
+                                editableDateInputs={true}
+                                // setStateAction for onChange to update date when clicked
+                                onChange={item => setDate([item.selection])}
+                                moveRangeOnFirstSelection={false}
+                                ranges={date}
+                                //can't select a date from the past
+                                minDate={new Date()}
+                            />
+                        )}
                     </div> 
                     <div className="headerSearchItem">
                         <FontAwesomeIcon icon={faPerson} className="headerIcon" />
@@ -98,7 +116,7 @@ const Header = ({ type }) => {
                         {`${guests.adults} adults | ${guests.children} children | ${guests.infants} infants`}</span>
                         {openGuests && <div className="guests">
                             <div className="guestItem">
-                                <span className="guestText">Adults</span>
+                                <span className="guestText">Adult(s)</span>
                                 <div className="guestCounter">
                                     <button 
                                     disabled={guests.adults <= 1}
@@ -124,7 +142,7 @@ const Header = ({ type }) => {
                                 </div>
                             </div>
                             <div className="guestItem">
-                                <span className="guestText">Infants</span>
+                                <span className="guestText">Infant(s)</span>
                                 <div className="guestCounter">
                                     <button 
                                     disabled={guests.infants <= 0}
@@ -139,7 +157,8 @@ const Header = ({ type }) => {
                         </div>}
                     </div> 
                     <div className="headerSearchItem">
-                        <button className="headerButton">Search</button>
+                        {/* onClick event  */}
+                        <button className="headerButton" onClick={handleSearch}>Search</button>
                     </div>
                 </div>
             </>}
