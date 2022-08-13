@@ -28,8 +28,8 @@ db.Location.create([
     airport: "Louis Armstrong New Orleans International Airport",
   },
   {
-    city: "London",
-    airport: "Heathrow Airport",
+    city: "Miami",
+    airport: "Miami International Airport",
   },
   {
     city: "New York",
