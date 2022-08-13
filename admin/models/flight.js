@@ -13,6 +13,11 @@ const flightSchema = new mongoose.Schema({
     ref:"Location",
     required: true
   },
+  airline: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Airline",
+    required: true
+  },
   adultPrice: { type: Number, default: 200 },
   childPrice: { type: Number, default: 150 },
   departureDate: { type: Date, required: true },

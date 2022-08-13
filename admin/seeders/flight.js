@@ -1,6 +1,7 @@
 // require models folder to give CRUD access to database in models
 const db = require("../models");
 
+// Find airline companies and set as airline
 // Flight will be from LAX to London
     // Find LAX location and set as from location
     // Find London location and set as to location
@@ -11,19 +12,26 @@ const db = require("../models");
 // Create a flight
 
 async function airport() {
+    var allAirlines = await db.Airline.find();
+    let airline = allAirlines[2]
+    
     var allLocations = await db.Location.find();
     let to = allLocations[Math.floor(Math.random()*allLocations.length)];
     let from = allLocations[Math.floor(Math.random()*allLocations.length)];
+    
     let adultPrice = Math.floor(Math.random() * 900) + 100;
     let childPrice = adultPrice * 0.7;
+    
     let departureDate = new Date();
     departureDate.setDate(departureDate.getDate()+Math.floor(Math.random() * 30)+ 1);
+    
     let roundTrip = Math.random() > 0.5 ? true : false;
 
     let flight = await db.Flight.create([
         {
         from: from,
         to: to,
+        airline: airline,
         adultPrice: adultPrice,
         childPrice: childPrice,
         departureDate: departureDate,
