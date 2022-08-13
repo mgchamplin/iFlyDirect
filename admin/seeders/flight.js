@@ -28,6 +28,7 @@ async function airport() {
         departureDate: departureDate,
         roundTrip: roundTrip
     });
+    process.exit();
 };
 
 airport();
