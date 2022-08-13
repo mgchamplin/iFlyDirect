@@ -12,8 +12,8 @@ const db = require("../models");
 
 async function airport() {
     var allLocations = await db.Location.find();
-    let to = allLocations[1];
-    let from = allLocations[6];
+    let to = allLocations[Math.floor(Math.random()*allLocations.length)];
+    let from = allLocations[Math.floor(Math.random()*allLocations.length)];
     let adultPrice = Math.floor(Math.random() * 900) + 100;
     let childPrice = adultPrice * 0.7;
     let departureDate = new Date();
