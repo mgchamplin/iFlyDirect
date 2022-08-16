@@ -1,16 +1,6 @@
 // require models folder to give CRUD access to database in models
 const db = require("../models");
 
-// Find airline companies and set as airline
-// Flight will be from LAX to London
-    // Find LAX location and set as from location
-    // Find London location and set as to location
-// Flights price will be $200
-// Flights departure date will be 8/15/22
-// Flights arrival date will be 8/16/22
-// Flight not a round trip
-// Create a flight
-
 async function getLocations() {
   // Get random from location
 // Get random to locatiion
@@ -25,6 +15,15 @@ async function getLocations() {
   return flightPath
 }
 
+// Find airline companies and set as airline
+// Flight will be from LAX to London
+    // Find LAX location and set as from location
+    // Find London location and set as to location
+// Flights price will be $200
+// Flights departure date will be 8/15/22
+// Flights arrival date will be 8/16/22
+// Flight not a round trip
+// Create a flight
 async function createFlight() {
     var locations = await getLocations()
     var allAirlines = await db.Airline.find();
