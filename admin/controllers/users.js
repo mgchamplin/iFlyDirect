@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const bcrypt = require('bcrypt')
-const { response } = require('express')
 const jwt = require('json-web-token')
 const db = require('../models')
 
@@ -68,7 +67,7 @@ router.post('/login', async (req, res) => {
     })
 
     if (user_id === null) {
-        res.send("User Not Found")
+        res.json("User Not Found")
         return
     }
 
@@ -76,7 +75,7 @@ router.post('/login', async (req, res) => {
     //
     if (!await bcrypt.compare(req_password, password_digest)) {
         if (process.env.DEBUG==1) console.log("**** LOGIN FAILED - password mismatch")
-        res.send("Password did not match")
+        res.json("Password did not match")
     } else {
         console.log("USER ID IS " + user_id)
 
@@ -123,7 +122,7 @@ router.get('/profile', async (req, res) => {
             })
         }
         else
-            res.send("BAD AUTHEN METHOD")
+            res.json("BAD AUTHEN METHOD")
 
     } catch {
         res.json(null)

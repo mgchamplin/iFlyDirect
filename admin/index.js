@@ -16,12 +16,12 @@ app.use(express.json())
 app.use(methodOverride('_method'));
 app.use(cors())
 
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
-// mongoose.connect(process.env.MONGODB_URI, {
-//     useNewUrlParser:    true, 
-//     useUnifiedTopology: true,
-//   })
+mongoose.connect(process.env.MONGODB_URI, {
+     useNewUrlParser:    true, 
+     useUnifiedTopology: true,
+})
 
 if (process.env.DEBUG==1) console.log("CONNECTING TO =" + process.env.MONGODB_URI);
 
@@ -29,7 +29,7 @@ if (process.env.DEBUG==1) console.log("CONNECTING TO =" + process.env.MONGODB_UR
 // Controllers & Routes
 app.use('/users', require('./controllers/users'));
 app.use('/flights', require('./controllers/flights'));
-
+app.use('/seeders', require('./controllers/seeders'));
 
 if (process.env.DEBUG==1) console.log("Listening on Port " + process.env.PORT + " (set in your .env file)")
 app.listen(process.env.PORT);
