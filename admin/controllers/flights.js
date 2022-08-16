@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     .catch(err => {
         console.log(err)
 
-        res.send("Failed User Creation")
+        res.send("Failed Userr Creation")
     })
 })
 
