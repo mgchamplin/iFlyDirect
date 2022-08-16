@@ -1,6 +1,10 @@
+import useFetch from "../../hooks/useFetch"
 import "./searchResult.css"
 
 const SearchResult = () => {
+    const { data, loading, error, reFetch } = useFetch("/flights")
+    console.log(data)
+
   return (
     <div className="searchRes">
         <img 
