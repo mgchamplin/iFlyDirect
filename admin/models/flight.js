@@ -3,26 +3,21 @@ const mongoose = require("mongoose");
 
 // Declare Schema for defining a place.
 const flightSchema = new mongoose.Schema({
-  from: { 
-    type: mongoose.Schema.Types.ObjectId,
-    ref:"Location",
-    required: true
-  },
-  to: { 
-    type: mongoose.Schema.Types.ObjectId,
-    ref:"Location",
-    required: true
-  },
-  airline: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Airline",
-    required: true
-  },
-  adultPrice: { type: Number, default: 200 },
-  childPrice: { type: Number, default: 150 },
-  departureDate: { type: Date, required: true },
-  returnDate: { type: Date },
-  roundTrip: { type: Boolean, default: false }
+  from_id:        { type: mongoose.Schema.Types.ObjectId, ref:"Location", required: true},
+  from_city:      { type: String,   default: "City" },
+
+  to_id:          { type: mongoose.Schema.Types.ObjectId, ref:"Location", required: true},
+  to_city:        { type: String,   default: "City" },
+  
+  airline:        { type: String,   default: "TWA"},
+
+  adult_price:    { type: Number, default: 200 },
+  child_price:    { type: Number, default: 150 },
+
+  departure_date: { type: Date, required: true },
+  arrival___date: { type: Date, required: true },
+
+  round_trip:     { type: Boolean, default: false }
 });
 
 
