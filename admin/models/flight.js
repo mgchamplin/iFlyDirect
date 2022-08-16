@@ -1,7 +1,7 @@
 // require Mongoose
 const mongoose = require("mongoose");
 
-// Declare Schema for defining a place.
+// Declare Schema for defining a flight.
 const flightSchema = new mongoose.Schema({
   from: { 
     type: mongoose.Schema.Types.ObjectId,
