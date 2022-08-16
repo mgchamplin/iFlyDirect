@@ -16,8 +16,20 @@ db.Location.create([
     airport: "Daniel K. Inouye International Airport",
   },
   {
+    city: "Kahului",
+    airport: "Kahului Airport",
+  },
+  {
     city: "Las Vegas",
     airport: "Harry Reid International Airport",
+  },
+  {
+    city: "New Orleans",
+    airport: "Louis Armstrong New Orleans International Airport",
+  },
+  {
+    city: "Miami",
+    airport: "Miami International Airport",
   },
   {
     city: "New York",

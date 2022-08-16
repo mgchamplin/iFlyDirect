@@ -26,6 +26,7 @@
     border: 1px solid #394D5F;
     position: sticky;
     top: 10px;
+    height: max-content;
 }
 
 .listTitle{
