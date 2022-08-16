@@ -10,6 +10,10 @@ const db = require('../models')
 router.post('/new', async (req, res) => {
     if (process.env.DEBUG==1) console.log("------------------------- \nPOST new user")
     if (process.env.DEBUG==1) console.log("PASSWORD = " + req.body.password)
+    if (process.env.DEBUG==1) console.log("FIRST = " + req.body.first_name)
+    if (process.env.DEBUG==1) console.log("LAST  = " + req.body.last_name)
+    if (process.env.DEBUG==1) console.log("EMAIL = " + req.body.email_address)
+
 
     // Collect username and password, then encript it
     //
@@ -18,7 +22,7 @@ router.post('/new', async (req, res) => {
 
     // Check to make sure that username isn't already registered
     //
-    db.User.findOne({"username" : req_username})
+    await db.User.findOne({"username" : req_username})
     .then(user => {
         res.send(`Username ${user.username} already in use`)
     })
@@ -31,7 +35,13 @@ router.post('/new', async (req, res) => {
         
         // Insert into the User DB
         //
-        db.User.create({username: req_username, password_digest: passworddigest})
+
+        db.User.create({username:           req_username, 
+                        password_digest:    passworddigest,
+                        first_name:         req.body.first_name,
+                        last_name:          req.body.last_name,
+                        email_address:      req.body.email_address})
+
         .then(user => {
             res.send(`User ${req_username} created`)
         })
