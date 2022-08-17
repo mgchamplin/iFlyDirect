@@ -23,7 +23,7 @@ const List = () => {
 
   //shove changes to /flights(<List />)
   const handleSearch = () => {
-      navigate("/flights", {state:{ fromDestination,toDestination,date,guests }})
+      navigate("/flights", {state:{ setFromDestination,setToDestination }})
   }
 
   // const { data, loading, error } = useFetch("/flights")
@@ -91,7 +91,7 @@ const List = () => {
               {/* </Link> */}
             </div>
               <div className="listResult">
-              <SearchResult/>
+              <SearchResult from={fromDestination} to={toDestination}/>
             {/* {data.map((item)=> (
               <SearchResult item={item} key={item._id}/>
               ))} */}

@@ -6,56 +6,26 @@ import { useLocation } from 'react-router-dom'
 import { DateRange } from 'react-date-range';
 // import { useState } from 'react';
 
-const SearchResult = () => {
+// const SearchResult = () => {
 
-    const location = useLocation()
+    // const location = useLocation()
 
-    const [fromDestination, setFromDestination] = useState(location.state.fromDestination)
-    const [toDestination, setToDestination] = useState(location.state.toDestination)
-    const [date,setDate] = useState(location.state.date)
-    const [openCalendar, setOpenCalendar] = useState(false)
-    const [guests,setGuests] = useState(location.state.guests)
+    // const [fromDestination, setFromDestination] = useState(location.state.fromDestination)
+    // const [toDestination, setToDestination] = useState(location.state.toDestination)
+    // const [date,setDate] = useState(location.state.date)
+    // const [openCalendar, setOpenCalendar] = useState(false)
+    // const [guests,setGuests] = useState(location.state.guests)
 
-    const { data, loading, error, reFetch } = useFetch(`/flights?city=${fromDestination}`)
+    // const { data, loading, error, reFetch } = useFetch(`/flights?city=${fromDestination}`)
 
-    // const { data, loading, error } = useFetch("/flights")
-    // console.log(data)
+const SearchResult = (from, to) => {
+    const { data, loading, error } = useFetch("/flights");
 
-    // let flightData = [data];
+    let data2 = data.filter(function (entry){
+        return entry.to_city == from.to && entry.from_city == from.from;
+    });
+// };
 
-    // const handleMove = (i) => {
-    //     let newSlideNumber;
-    
-    //     if (index === "i") {
-    //         newIndexNumber = indexNumber === 0 ? flightData.length : indexNumber - 1;
-    //     } else {
-    //       newSlideNumber = indexNumber === flightData.length ? 0 : indexNumber + 1;
-    //     }
-    
-    //     setSlideNumber(newSlideNumber)
-    //   };
-    
-//     const flightArray(array, elem){
-//     let newData = [];
-//     for (i = 0; i < array.length; i++){
-//         if 
-//         flightData[i]
-//     }
-// }
-
-    // const images = [ 
-    //     "https://picsum.photos/250/250",
-    //     "https://picsum.photos/250/250",
-    //     "https://picsum.photos/250/250",
-    //     "https://picsum.photos/250/250",
-    // ]
-
-    // const [date, setDate] = useState([
-    //     {
-    //         startDate: new Date(data[0]?.departure_date),            
-    //         key: 'selection'
-    //     } 
-    //   ]);
 
   return (
     <div className="searchRes">
@@ -64,7 +34,12 @@ const SearchResult = () => {
             ) : (
             <>
             {/* if there's a data, images.map and for each img, return div.  */}
-                {data.map((item)=> (
+                {/* {data.filter((item)=>{
+                    [{fromDestination},
+                        {toDestination},
+                        {date}]
+                }).map((item)=> ( */}
+                {data2.map((item)=> (
                     <div className="searchItem" key={item._id}>
                     <img 
                         // src={img} 

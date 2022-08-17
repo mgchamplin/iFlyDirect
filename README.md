@@ -21,6 +21,7 @@ npm i @fortawesome/react-fontawesome
 npm i @fortawesome/free-solid-svg-icons
 npm i react-date-range  //calender library 
 npm i date-fns  //date formatter to convert to strings
+<!-- npm i -S http-proxy-middleware -->
 npm i axios //Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase).
 
 ### Deliverables / MVP:
