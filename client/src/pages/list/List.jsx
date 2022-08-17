@@ -74,9 +74,7 @@ const List = () => {
               <button>Search</button>
             </div>
             <div className="listResult">
-              <SearchResult />
-              <SearchResult />
-              <SearchResult />
+              <SearchResult />              
             </div>
           </div>
         </div>
