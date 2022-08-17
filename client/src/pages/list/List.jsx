@@ -11,7 +11,9 @@ const List = () => {
   // useLocation hook returns the current location object. Performs some side effect whenever the current location changes.
   const location = useLocation()
   //since it's not globally scoped, need to redefine states
-  const [destination,setDestination] = useState(location.state.destination)
+  // const [destination,setDestination] = useState(location.state.destination)
+  const [fromDestination, setFromDestination] = useState(location.state.fromDestination)
+  const [toDestination, setToDestination] = useState(location.state.toDestination)
   const [date,setDate] = useState(location.state.date)
   const [openCalendar, setOpenCalendar] = useState(false)
   const [guests,setGuests] = useState(location.state.guests)
@@ -29,8 +31,10 @@ const List = () => {
             <div className="listSearch">
               <h1 className="listTitle"> Search </h1>
               <div className="listItem">
-                <label> Destination </label>
-                <input placeholder={destination} type="text" />
+                <label> From Location </label>
+                <input placeholder={fromDestination} type="text" />
+                <label> To Destination </label>
+                <input placeholder={toDestination} type="text" />
               </div>
               <div className="listItem">
                 <label> Departure date </label>
@@ -74,9 +78,7 @@ const List = () => {
               <button>Search</button>
             </div>
             <div className="listResult">
-              <SearchResult />
-              <SearchResult />
-              <SearchResult />
+              <SearchResult />              
             </div>
           </div>
         </div>

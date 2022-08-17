@@ -32,6 +32,12 @@
     gap: 8px;
 }
 
+.activeListItem{
+    padding: 7.5px 15px;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
 .headerListItem.active{
     border: 1px solid white;
     border-radius: 8px;

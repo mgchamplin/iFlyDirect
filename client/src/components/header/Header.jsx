@@ -9,7 +9,8 @@ import { format } from 'date-fns';
 import { useNavigate } from "react-router-dom";
 
 const Header = ({ type }) => {
-    const [destination, setDestination] = useState("")
+    const [fromDestination, setFromDestination] = useState("")
+    const [toDestination, setToDestination] = useState("")
     // useState to make sure calendar component isn't displaying by default when page loads
     const [openCalendar, setOpenCalendar] = useState(false)
     // set state with object array, date-fns library converts from javascript dates to readable strings. 
@@ -44,7 +45,7 @@ const Header = ({ type }) => {
 
     //shove changes to /flights(<List />)
     const handleSearch = () => {
-        navigate("/flights", {state:{ destination,date,guests }})
+        navigate("/flights", {state:{ fromDestination,toDestination,date,guests }})
     }
 
   return (
@@ -56,7 +57,7 @@ const Header = ({ type }) => {
                     <FontAwesomeIcon icon={faPlane} />
                     <span>Roundtrip</span>
                 </div>
-                <div className="headerListItem">
+                <div className="headerListItem activeListItem">
                     <FontAwesomeIcon icon={faPlane} />
                     <span>One-Way</span>
                 </div>
@@ -80,10 +81,14 @@ const Header = ({ type }) => {
                         placeholder='Leaving from' 
                         className='headerSearchInput'
                         // when changed, update value on results List. 
-                        onChange={e=>setDestination(e.target.value)}
+                        onChange={e=>setFromDestination(e.target.value)}
                         />
                         <FontAwesomeIcon icon={faPlane} className="headerIcon" />
-                        <input type="text" placeholder='Going to' className='headerSearchInput' />
+                        <input type="text" 
+                        placeholder='Going to' 
+                        className='headerSearchInput' 
+                        onChange={e=>setToDestination(e.target.value)}
+                        />
                     </div>
                     <div className="headerSearchItem">
                         <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />

@@ -42,6 +42,8 @@ const stateList = () => {
                 <FontAwesomeIcon icon={faCircleArrowRight} />
                 </div>
             } */}
+
+            {/* redo this & count by type */}
             <FontAwesomeIcon icon={faCircleArrowLeft} className='styled-icon'/>
             <div className="listStateWrapper">
                 <div className="sListItem" 
