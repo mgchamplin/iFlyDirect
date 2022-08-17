@@ -1,6 +1,6 @@
 import useFetch from "../../hooks/useFetch"
 import "./searchResult.css"
-// import { format, parseISO } from 'date-fns'
+import { format } from 'date-fns'
 // import { useState } from 'react';
 
 const SearchResult = () => {
@@ -60,8 +60,10 @@ const SearchResult = () => {
                     />
                     <div className="searchResDesc">
                         <div className="searchResInfo">
-                            <h1 className="searchResTitle">{item?.departure_date}</h1>
-                            {/* <h1 className="searchResTitle">{`${format({data[0]?.departure_date}), "MM/dd/yyyy HH:mm:"}}`}</h1> */}
+                            {/* <h1 className="searchResTitle">{item?.departure_date}</h1> */}
+                            <h1 className="searchResTitle">{`${format(new Date(item?.departure_date),'MMM dd,yyyy -  hh:mm a')}`}</h1>
+                            {/* <h1>{`$format(new Date(item?.departure_date}),'mm-dd-yyyy  hh:mm a')}`}</h1> */}
+                            {/* <h1 className="searchResTitle">{`${format(new Date{item?.departure_date}), "MM/dd/yyyy HH:mm:"}}`}</h1> */}
                             {/* <h1 className="searchResTitle">{`${format(parseISO(date[0].startDate)), "MM/dd/yyyy HH:mm:ss"}}`}</h1> */}
                             {/* <h1 className="searchResTitle">{`${format(parseISO(date[0].departure_date), "EEEE MM/dd/yyyy; HH:mm")}`}</h1> */}                
                             <div className="searchResDepart">
@@ -77,7 +79,7 @@ const SearchResult = () => {
                                 <span className="searchResCostAdultSubTitle sub-text">per Traveler(18+)</span>
                             </div>
                             <div className="searchResItem">
-                                <span className="searchResCostNotAdult"><h2>${item?.child_price*.65}</h2>{/*(65%)*/}</span>
+                                <span className="searchResCostNotAdult"><h2>${item?.child_price}</h2>{/*(70%)*/}</span>
                                 <span className="searchResCostNotAdultSubTitle">per miniTraveler</span>
                             </div>
                         </div>
