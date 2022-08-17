@@ -1,10 +1,11 @@
 import { useState} from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { format } from 'date-fns';
 import Header from '../../components/header/Header'
 import Navbar from '../../components/navbar/Navbar'
 import "./list.css"
 import { DateRange } from 'react-date-range';
+// import useFetch from "../../hooks/useFetch"
 import SearchResult from '../../components/searchResult/SearchResult';
 
 const List = () => {
@@ -17,6 +18,15 @@ const List = () => {
   const [date,setDate] = useState(location.state.date)
   const [openCalendar, setOpenCalendar] = useState(false)
   const [guests,setGuests] = useState(location.state.guests)
+
+  const navigate = useNavigate ()
+
+  //shove changes to /flights(<List />)
+  const handleSearch = () => {
+      navigate("/flights", {state:{ fromDestination,toDestination,date,guests }})
+  }
+
+  // const { data, loading, error } = useFetch("/flights")
 
   // console.log(location)
 
@@ -75,10 +85,16 @@ const List = () => {
                   </div>
                 </div>
               </div>
-              <button>Search</button>
+              {/* <Link to={`/flights?city=${fromDestination}`}>
+              <Link to={`/flights`}> */}
+                <button className="headerButton" onClick={handleSearch}>Search</button>
+              {/* </Link> */}
             </div>
-            <div className="listResult">
-              <SearchResult />              
+              <div className="listResult">
+              <SearchResult/>
+            {/* {data.map((item)=> (
+              <SearchResult item={item} key={item._id}/>
+              ))} */}
             </div>
           </div>
         </div>

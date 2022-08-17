@@ -1,11 +1,25 @@
 import useFetch from "../../hooks/useFetch"
 import "./searchResult.css"
 import { format } from 'date-fns'
+import { useState} from 'react'
+import { useLocation } from 'react-router-dom'
+import { DateRange } from 'react-date-range';
 // import { useState } from 'react';
 
 const SearchResult = () => {
-    const { data, loading, error } = useFetch("/flights")
-    console.log(data)
+
+    const location = useLocation()
+
+    const [fromDestination, setFromDestination] = useState(location.state.fromDestination)
+    const [toDestination, setToDestination] = useState(location.state.toDestination)
+    const [date,setDate] = useState(location.state.date)
+    const [openCalendar, setOpenCalendar] = useState(false)
+    const [guests,setGuests] = useState(location.state.guests)
+
+    const { data, loading, error, reFetch } = useFetch(`/flights?city=${fromDestination}`)
+
+    // const { data, loading, error } = useFetch("/flights")
+    // console.log(data)
 
     // let flightData = [data];
 

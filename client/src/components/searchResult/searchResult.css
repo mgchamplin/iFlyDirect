@@ -2,11 +2,14 @@
     width: 100%;
     display: flex;
     border: 1px solid lightgray;
+    padding: 10px;
     border-radius: 5px;
+    /* gap: 10px; */
 }
 
 .searchRes{
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
+    /* margin: 10px; */
     padding: 10px;
     border-radius: 5px;
     display: flex;
