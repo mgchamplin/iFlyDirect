@@ -6,7 +6,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({ type }) => {
     const [fromDestination, setFromDestination] = useState("")
@@ -162,8 +162,12 @@ const Header = ({ type }) => {
                         </div>}
                     </div> 
                     <div className="headerSearchItem">
-                        {/* onClick event  */}
+                        {/* onClick event  */}                        
+                        {/* <Link to={`/flights?city=${fromDestination}`}> */}
+                        {/* <Link to={`/flights`}> */}
                         <button className="headerButton" onClick={handleSearch}>Search</button>
+                        {/* <button>Search</button> */}
+                        {/* </Link> */}
                     </div>
                 </div>
             </>}
