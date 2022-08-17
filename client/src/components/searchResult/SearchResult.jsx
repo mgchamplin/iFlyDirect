@@ -1,9 +1,9 @@
 import useFetch from "../../hooks/useFetch"
 import "./searchResult.css"
 import { format } from 'date-fns'
-import { useState} from 'react'
-import { useLocation } from 'react-router-dom'
-import { DateRange } from 'react-date-range';
+// import { useState} from 'react'
+// import { useLocation } from 'react-router-dom'
+// import { DateRange } from 'react-date-range';
 // import { useState } from 'react';
 
 // const SearchResult = () => {

@@ -1,5 +1,5 @@
-import { useState} from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useState, useRef} from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { format } from 'date-fns';
 import Header from '../../components/header/Header'
 import Navbar from '../../components/navbar/Navbar'
@@ -22,9 +22,21 @@ const List = () => {
   const navigate = useNavigate ()
 
   //shove changes to /flights(<List />)
-  const handleSearch = () => {
-      navigate("/flights", {state:{ setFromDestination,setToDestination }})
+  const fromDestRef = useRef(null);
+  const toDestRef = useRef(null);
+  
+  function handleSearch() {
+    fromDestRef.current.value = document.getElementById('newFromDest').value;
+    toDestRef.current.value = document.getElementById('newToDest').value;
   }
+
+  // const SearchResult = (from, to) => {
+  //   const { data, loading, error } = useFetch("/flights");
+
+  //   let data2 = data.filter(function (entry){
+  //       return entry.to_city == from.to && entry.from_city == from.from;
+  //   });
+  // }
 
   // const { data, loading, error } = useFetch("/flights")
 
@@ -42,9 +54,9 @@ const List = () => {
               <h1 className="listTitle"> Search </h1>
               <div className="listItem">
                 <label> From Location </label>
-                <input placeholder={fromDestination} type="text" />
+                <input placeholder={fromDestination} type="text" ref={fromDestRef} id="newFromDest"/>
                 <label> To Destination </label>
-                <input placeholder={toDestination} type="text" />
+                <input placeholder={toDestination} type="text" ref={toDestRef} id="newToDest"/>
               </div>
               <div className="listItem">
                 <label> Departure date </label>
