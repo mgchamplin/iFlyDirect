@@ -6,7 +6,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ type }) => {
     const [fromDestination, setFromDestination] = useState("")
@@ -82,12 +82,14 @@ const Header = ({ type }) => {
                         className='headerSearchInput'
                         // when changed, update value on results List. 
                         onChange={e=>setFromDestination(e.target.value)}
+                        required
                         />
                         <FontAwesomeIcon icon={faPlane} className="headerIcon" />
                         <input type="text" 
                         placeholder='Going to' 
                         className='headerSearchInput' 
                         onChange={e=>setToDestination(e.target.value)}
+                        required
                         />
                     </div>
                     <div className="headerSearchItem">
