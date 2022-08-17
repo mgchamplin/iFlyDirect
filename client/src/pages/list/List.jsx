@@ -22,13 +22,13 @@ const List = () => {
   const navigate = useNavigate ()
 
   //shove changes to /flights(<List />)
-  const fromDestRef = useRef(null);
-  const toDestRef = useRef(null);
+  // const fromDestRef = useRef(null);
+  // const toDestRef = useRef(null);
   
-  function handleSearch() {
-    fromDestRef.current.value = document.getElementById('newFromDest').value;
-    toDestRef.current.value = document.getElementById('newToDest').value;
-  }
+  // function handleSearch() {
+  //   fromDestRef.current.value = document.getElementById('newFromDest').value;
+  //   toDestRef.current.value = document.getElementById('newToDest').value;
+  // }
 
   // const SearchResult = (from, to) => {
   //   const { data, loading, error } = useFetch("/flights");
@@ -54,9 +54,11 @@ const List = () => {
               <h1 className="listTitle"> Search </h1>
               <div className="listItem">
                 <label> From Location </label>
-                <input placeholder={fromDestination} type="text" ref={fromDestRef} id="newFromDest"/>
+                <input placeholder={fromDestination} type="text" id="newFromDest"/>
+                {/* <input placeholder={fromDestination} type="text" ref={fromDestRef} id="newFromDest"/> */}
                 <label> To Destination </label>
-                <input placeholder={toDestination} type="text" ref={toDestRef} id="newToDest"/>
+                <input placeholder={toDestination} type="text" id="newToDest"/>
+                {/* <input placeholder={toDestination} type="text" ref={toDestRef} id="newToDest"/> */}
               </div>
               <div className="listItem">
                 <label> Departure date </label>
@@ -99,7 +101,8 @@ const List = () => {
               </div>
               {/* <Link to={`/flights?city=${fromDestination}`}>
               <Link to={`/flights`}> */}
-                <button className="headerButton" onClick={handleSearch}>Search</button>
+              <button className="headerButton">Search</button>
+                {/* <button className="headerButton" onClick={handleSearch}>Search</button> */}
               {/* </Link> */}
             </div>
               <div className="listResult">

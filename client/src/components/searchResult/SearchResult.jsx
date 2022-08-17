@@ -1,31 +1,47 @@
 import useFetch from "../../hooks/useFetch"
 import "./searchResult.css"
-import { format } from 'date-fns'
-// import { useState} from 'react'
-// import { useLocation } from 'react-router-dom'
-// import { DateRange } from 'react-date-range';
+// import { format, parseISO } from 'date-fns'
 // import { useState } from 'react';
 
-// const SearchResult = () => {
+const SearchResult = () => {
+    const { data, loading, error } = useFetch("/flights")
+    console.log(data)
 
-    // const location = useLocation()
+    // let flightData = [data];
 
-    // const [fromDestination, setFromDestination] = useState(location.state.fromDestination)
-    // const [toDestination, setToDestination] = useState(location.state.toDestination)
-    // const [date,setDate] = useState(location.state.date)
-    // const [openCalendar, setOpenCalendar] = useState(false)
-    // const [guests,setGuests] = useState(location.state.guests)
+    // const handleMove = (i) => {
+    //     let newSlideNumber;
+    
+    //     if (index === "i") {
+    //         newIndexNumber = indexNumber === 0 ? flightData.length : indexNumber - 1;
+    //     } else {
+    //       newSlideNumber = indexNumber === flightData.length ? 0 : indexNumber + 1;
+    //     }
+    
+    //     setSlideNumber(newSlideNumber)
+    //   };
+    
+//     const flightArray(array, elem){
+//     let newData = [];
+//     for (i = 0; i < array.length; i++){
+//         if 
+//         flightData[i]
+//     }
+// }
 
-    // const { data, loading, error, reFetch } = useFetch(`/flights?city=${fromDestination}`)
+    // const images = [ 
+    //     "https://picsum.photos/250/250",
+    //     "https://picsum.photos/250/250",
+    //     "https://picsum.photos/250/250",
+    //     "https://picsum.photos/250/250",
+    // ]
 
-const SearchResult = (from, to) => {
-    const { data, loading, error } = useFetch("/flights");
-
-    let data2 = data.filter(function (entry){
-        return entry.to_city == from.to && entry.from_city == from.from;
-    });
-// };
-
+    // const [date, setDate] = useState([
+    //     {
+    //         startDate: new Date(data[0]?.departure_date),            
+    //         key: 'selection'
+    //     } 
+    //   ]);
 
   return (
     <div className="searchRes">
@@ -34,12 +50,7 @@ const SearchResult = (from, to) => {
             ) : (
             <>
             {/* if there's a data, images.map and for each img, return div.  */}
-                {/* {data.filter((item)=>{
-                    [{fromDestination},
-                        {toDestination},
-                        {date}]
-                }).map((item)=> ( */}
-                {data2.map((item)=> (
+                {data.map((item)=> (
                     <div className="searchItem" key={item._id}>
                     <img 
                         // src={img} 
@@ -49,10 +60,8 @@ const SearchResult = (from, to) => {
                     />
                     <div className="searchResDesc">
                         <div className="searchResInfo">
-                            {/* <h1 className="searchResTitle">{item?.departure_date}</h1> */}
-                            <h1 className="searchResTitle">{`${format(new Date(item?.departure_date),'MMM dd,yyyy -  hh:mm a')}`}</h1>
-                            {/* <h1>{`$format(new Date(item?.departure_date}),'mm-dd-yyyy  hh:mm a')}`}</h1> */}
-                            {/* <h1 className="searchResTitle">{`${format(new Date{item?.departure_date}), "MM/dd/yyyy HH:mm:"}}`}</h1> */}
+                            <h1 className="searchResTitle">{item?.departure_date}</h1>
+                            {/* <h1 className="searchResTitle">{`${format({data[0]?.departure_date}), "MM/dd/yyyy HH:mm:"}}`}</h1> */}
                             {/* <h1 className="searchResTitle">{`${format(parseISO(date[0].startDate)), "MM/dd/yyyy HH:mm:ss"}}`}</h1> */}
                             {/* <h1 className="searchResTitle">{`${format(parseISO(date[0].departure_date), "EEEE MM/dd/yyyy; HH:mm")}`}</h1> */}                
                             <div className="searchResDepart">
@@ -68,7 +77,7 @@ const SearchResult = (from, to) => {
                                 <span className="searchResCostAdultSubTitle sub-text">per Traveler(18+)</span>
                             </div>
                             <div className="searchResItem">
-                                <span className="searchResCostNotAdult"><h2>${item?.child_price}</h2>{/*(70%)*/}</span>
+                                <span className="searchResCostNotAdult"><h2>${item?.child_price}</h2>{/*(65%)*/}</span>
                                 <span className="searchResCostNotAdultSubTitle">per miniTraveler</span>
                             </div>
                         </div>
