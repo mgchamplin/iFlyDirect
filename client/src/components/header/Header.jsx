@@ -71,7 +71,7 @@ const Header = ({ type }) => {
                 <>
                 <div className="headerBanner">
                 <h1 className="headerTitle">One stop shop for non-stop flights.</h1>
-                <p className="headerDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur placeat odio alias provident veniam maxime, porro dignissimos exercitationem suscipit magnam asperiores, cumque architecto consequuntur iure vel ut minima eius incidunt!</p>
+                <p className="headerDescription">We know your time is important.  You don't want to waste it sitting around in airports waiting for the next leg of your journey.  So, we provide you with high quality, non-stop flights throught the U.S.  Enter your destination below to get started.</p>
                 <button className="headerButton">Sign in / Register</button>
                 </div>
                 <div className="headerSearch">
