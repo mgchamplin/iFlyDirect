@@ -42,13 +42,16 @@ const List = (props,state) => {
     setLoading(true); 
     flightService('/flights', fromDestination, toDestination)
     .then((res) =>{
-      console.log(res)
+      // console.log(res)
         setData(res)
       // console.log(data)
         setLoading(false)
     });
   }
-  useEffect(()=>{fetchData()},[])
+  
+  useEffect(()=>{
+    fetchData()
+  },[])
 
 //   useEffect(() => {
 //     const fetchData = async () =>{
@@ -64,9 +67,7 @@ const List = (props,state) => {
 //     //     setLoading(false)
 //     };
 //     fetchData();
-// }, [])
-
-  
+// }, [])  
 
   // const { data, loading, error } = useFetch("/flights")
 

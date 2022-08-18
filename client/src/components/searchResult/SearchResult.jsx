@@ -29,7 +29,6 @@ import flightService from "../../hooks/useFetch";
         // const [error, setError] = useState(false)
         // console.log("search results for", props)
 
-
         // console.log("inside search result",from,to)
 
         // useEffect(() => {
@@ -51,6 +50,10 @@ import flightService from "../../hooks/useFetch";
                 // setLoading(false)           
             
         // }, [])
+        
+        // var data2 = props.data?.filter(function (entry){
+        //     return props.data.from.from < entry.departure_date < props.data.from.to 
+        // });
         
 
   return (
