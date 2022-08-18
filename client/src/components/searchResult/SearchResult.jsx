@@ -1,47 +1,48 @@
-import useFetch from "../../hooks/useFetch"
+// import useFetch from "../../hooks/useFetch"
 import "./searchResult.css"
-// import { format, parseISO } from 'date-fns'
+import { format } from 'date-fns'
+import { useState, useEffect } from 'react'
+import axios from 'axios';
+// import { useLocation } from 'react-router-dom'
+// import { DateRange } from 'react-date-range';
 // import { useState } from 'react';
 
-const SearchResult = () => {
-    const { data, loading, error } = useFetch("/flights")
-    console.log(data)
+// const SearchResult = () => {    
+//     const { data, loading, error } = useFetch("/flights")
+//     console.log(data)
 
-    // let flightData = [data];
+    // const location = useLocation()
 
-    // const handleMove = (i) => {
-    //     let newSlideNumber;
+    // const [fromDestination, setFromDestination] = useState(location.state.fromDestination)
+    // const [toDestination, setToDestination] = useState(location.state.toDestination)
+    // const [date,setDate] = useState(location.state.date)
+    // const [openCalendar, setOpenCalendar] = useState(false)
+    // const [guests,setGuests] = useState(location.state.guests)
+
+    // const { data, loading, error, reFetch } = useFetch(`/flights?city=${fromDestination}`)
     
-    //     if (index === "i") {
-    //         newIndexNumber = indexNumber === 0 ? flightData.length : indexNumber - 1;
-    //     } else {
-    //       newSlideNumber = indexNumber === flightData.length ? 0 : indexNumber + 1;
-    //     }
-    
-    //     setSlideNumber(newSlideNumber)
-    //   };
-    
-//     const flightArray(array, elem){
-//     let newData = [];
-//     for (i = 0; i < array.length; i++){
-//         if 
-//         flightData[i]
-//     }
-// }
+    const SearchResult = (from, to) => {
+        const [data, setData] = useState([])
+        const [loading, setLoading] = useState(false)
+        const [error, setError] = useState(false)
 
-    // const images = [ 
-    //     "https://picsum.photos/250/250",
-    //     "https://picsum.photos/250/250",
-    //     "https://picsum.photos/250/250",
-    //     "https://picsum.photos/250/250",
-    // ]
-
-    // const [date, setDate] = useState([
-    //     {
-    //         startDate: new Date(data[0]?.departure_date),            
-    //         key: 'selection'
-    //     } 
-    //   ]);
+        useEffect(() => {
+            const fetchData = async () =>{
+                setLoading(true)
+                try {
+                    const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+                    // const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+                    console.log(res.data);
+                    setData(res.data);
+                   
+                } catch (error){
+                    // setError(error)
+                }
+                setLoading(false)
+            };
+            fetchData();
+        }, [])
+        
 
   return (
     <div className="searchRes">
@@ -50,6 +51,11 @@ const SearchResult = () => {
             ) : (
             <>
             {/* if there's a data, images.map and for each img, return div.  */}
+                {/* {data.filter((item)=>{
+                    [{fromDestination},
+                        {toDestination},
+                        {date}]
+                }).map((item)=> ( */}
                 {data.map((item)=> (
                     <div className="searchItem" key={item._id}>
                     <img 
@@ -60,10 +66,8 @@ const SearchResult = () => {
                     />
                     <div className="searchResDesc">
                         <div className="searchResInfo">
-                            <h1 className="searchResTitle">{item?.departure_date}</h1>
-                            {/* <h1 className="searchResTitle">{`${format({data[0]?.departure_date}), "MM/dd/yyyy HH:mm:"}}`}</h1> */}
-                            {/* <h1 className="searchResTitle">{`${format(parseISO(date[0].startDate)), "MM/dd/yyyy HH:mm:ss"}}`}</h1> */}
-                            {/* <h1 className="searchResTitle">{`${format(parseISO(date[0].departure_date), "EEEE MM/dd/yyyy; HH:mm")}`}</h1> */}                
+                            <h1 className="searchResTitle">{`${format(new Date(item?.departure_date),'MMM dd,yyyy -  hh:mm a')}`}</h1>
+       
                             <div className="searchResDepart">
                                 <div className="searchResItem">
                                     <span className="searchResLocation">{item?.from_city} to {item?.to_city}</span>
@@ -77,7 +81,7 @@ const SearchResult = () => {
                                 <span className="searchResCostAdultSubTitle sub-text">per Traveler(18+)</span>
                             </div>
                             <div className="searchResItem">
-                                <span className="searchResCostNotAdult"><h2>${item?.child_price}</h2>{/*(65%)*/}</span>
+                                <span className="searchResCostNotAdult"><h2>${item?.child_price}</h2>{/*(70%)*/}</span>
                                 <span className="searchResCostNotAdultSubTitle">per miniTraveler</span>
                             </div>
                         </div>

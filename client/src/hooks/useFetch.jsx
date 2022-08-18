@@ -11,7 +11,7 @@ const useFetch = (url) => {
         const fetchData = async () =>{
             setLoading(true)
             try {
-                const res = await axios.get(url)
+                const res = await axios.get(url, {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
                 setData(res.data);
                 
             } catch (error){
@@ -35,5 +35,46 @@ const useFetch = (url) => {
     // send back data
     return { data, loading, error, reFetch };
 };
+
+
+// --- trial 
+// useEffect(() => {
+//     const fetchData = async () =>{
+//         setLoading(true)
+//         try {
+//             // const res = await axios.get(url)
+//             const params = new URLSearchParams()
+//             params.append('from_city', from)
+//             params.append('to_city', to)
+//             const res = await axios.get(url, params);
+//             setData(res.data);
+            
+//         } catch (error){
+//             setError(error)
+//         }
+//         setLoading(false)
+//     };
+//     fetchData();
+// }, [url])
+
+
+// const reFetch = async () => {
+//     setLoading(true);
+//     try {
+//         const params = new URLSearchParams()
+//         params.append('from_city', from)
+//         params.append('to_city', to)
+//         const res = await axios.get(url, params);
+//         setData(res.data);
+//     } catch (error) {
+//         setError(error);
+//     }
+//     setLoading(false);
+// };
+// // send back data
+// // const ret = await reFetch; 
+// return { data, loading, error, reFetch };
+// };
+
 
 export default useFetch;
