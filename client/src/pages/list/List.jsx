@@ -5,7 +5,7 @@ import Header from '../../components/header/Header'
 import Navbar from '../../components/navbar/Navbar'
 import "./list.css"
 import { DateRange } from 'react-date-range';
-import useFetch from "../../hooks/useFetch"
+// import useFetch from "../../hooks/useFetch"
 import SearchResult from '../../components/searchResult/SearchResult';
 import axios from 'axios';
 
