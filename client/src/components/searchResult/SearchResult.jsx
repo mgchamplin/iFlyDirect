@@ -30,8 +30,8 @@ import axios from 'axios';
             const fetchData = async () =>{
                 setLoading(true)
                 try {
-                    const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
-                    // const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+                    // const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+                    const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
                     console.log(res.data);
                     setData(res.data);
                    
