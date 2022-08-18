@@ -6,8 +6,8 @@ const db = require('../models')
 */
 router.get('/', (req, res) => {
     if (process.env.DEBUG==1) console.log("GET FLIGHTS")
-
-    db.Flight.find()
+    console.log(req.query)
+    db.Flight.find({from_city:req.query.from_city, to_city:req.query.to_city})
     .then(flights => {
         console.log("FOUND SOMETHING")
         console.log(flights)
@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
 
         res.send("Failed User Creation")
     })
+
 })
 
 module.exports = router

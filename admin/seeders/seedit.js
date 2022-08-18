@@ -101,14 +101,16 @@ module.exports = {
             console.log(airports.length)
             let counter = 0;
 
-            num_airports        = 20 //airports.length;
-            num_flight_options  = 4
+            num_airports        = 50 //airports.length;
+            num_flight_options  = 5
 
             for (let a = 0; a < num_airports; a++) {
                 for (let b = 0; b < num_airports; b++) {
                     if (airports[a]._id != airports[b]._id) {
                         for (let flight=0; flight < num_flight_options; flight++) {
-                            let fly_price = Math.round((Math.random() * 100),2) *10
+                            let fly_price = Math.round(((Math.random()+0.01) * 100),2) *10
+                            if (fly_price < 200)
+                                fly_price = 200 + 2 * b
                             let index = Math.floor(10* Math.random() % airlines.length)
                             let airline = airlines[index]
 
@@ -139,7 +141,7 @@ module.exports = {
                                                 airports[b]._id,
                                                 airline,
                                                 fly_price,
-                                                fly_price-10)
+                                                Math.round(fly_price * 0.75))
     /*
                             db.Flight.create({
                                 departure_date: depart_date,

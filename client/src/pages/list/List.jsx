@@ -1,4 +1,4 @@
-import { useState, useRef} from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { format } from 'date-fns';
 import Header from '../../components/header/Header'
@@ -7,6 +7,7 @@ import "./list.css"
 import { DateRange } from 'react-date-range';
 import useFetch from "../../hooks/useFetch"
 import SearchResult from '../../components/searchResult/SearchResult';
+import axios from 'axios';
 
 const List = () => {
   // useLocation hook returns the current location object. Performs some side effect whenever the current location changes.
@@ -19,6 +20,8 @@ const List = () => {
   const [openCalendar, setOpenCalendar] = useState(false)
   const [guests,setGuests] = useState(location.state.guests)
 
+
+  const [data,setData] = useState()
   const navigate = useNavigate ()
 
   //shove changes to /flights(<List />)
@@ -31,6 +34,21 @@ const List = () => {
   }
 
 
+  useEffect(() => {
+    const fetchData = async () =>{
+        // setLoading(true)
+        try {
+            const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+            console.log(res.data);
+            setData(res.data);
+           
+        } catch (error){
+            // setError(error)
+        }
+    //     setLoading(false)
+    };
+    fetchData();
+}, [])
 
   
 

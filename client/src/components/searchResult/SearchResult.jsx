@@ -1,7 +1,8 @@
-import useFetch from "../../hooks/useFetch"
+// import useFetch from "../../hooks/useFetch"
 import "./searchResult.css"
 import { format } from 'date-fns'
-// import { useState} from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios';
 // import { useLocation } from 'react-router-dom'
 // import { DateRange } from 'react-date-range';
 // import { useState } from 'react';
@@ -21,14 +22,27 @@ import { format } from 'date-fns'
     // const { data, loading, error, reFetch } = useFetch(`/flights?city=${fromDestination}`)
     
     const SearchResult = (from, to) => {
-        const { data, loading, error } = useFetch("/flights", from, to);
-        console.log(data)
-    
-        let data2 = data.filter(function (entry){
-            return entry.to_city == from.to && entry.from_city == from.from;
-        });
-        console.log(data2)
-    // };
+        const [data, setData] = useState([])
+        const [loading, setLoading] = useState(false)
+        const [error, setError] = useState(false)
+
+        useEffect(() => {
+            const fetchData = async () =>{
+                setLoading(true)
+                try {
+                    const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+                    // const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+                    console.log(res.data);
+                    setData(res.data);
+                   
+                } catch (error){
+                    // setError(error)
+                }
+                setLoading(false)
+            };
+            fetchData();
+        }, [])
+        
 
   return (
     <div className="searchRes">
@@ -42,7 +56,7 @@ import { format } from 'date-fns'
                         {toDestination},
                         {date}]
                 }).map((item)=> ( */}
-                {data2.map((item)=> (
+                {data.map((item)=> (
                     <div className="searchItem" key={item._id}>
                     <img 
                         // src={img} 

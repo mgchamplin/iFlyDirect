@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const locationSchema = new mongoose.Schema({
   city:       { type: String,   default: "City" },
   state:      { type: String,   default: "State" },
-  state_abbv: { type: String,   default: "State Abbv", unique: true },
+  state_abbv: { type: String,   default: "State Abbv"},
   region:     { type: String,   default: "Region" },
   airport:    { type: String,   default: "Airport", unique: true},
 });
