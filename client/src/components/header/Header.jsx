@@ -46,6 +46,7 @@ const Header = ({ type }) => {
     //shove changes to /flights(<List />)
     const handleSearch = () => {
         navigate("/flights", {state:{ fromDestination,toDestination,date,guests }})
+        console.log(fromDestination,toDestination)
     }
 
   return (

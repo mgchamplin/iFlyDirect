@@ -3,6 +3,8 @@ import "./searchResult.css"
 import { format } from 'date-fns'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+import { faCropSimple } from "@fortawesome/free-solid-svg-icons";
+import flightService from "../../hooks/useFetch";
 // import { useLocation } from 'react-router-dom'
 // import { DateRange } from 'react-date-range';
 // import { useState } from 'react';
@@ -21,42 +23,45 @@ import axios from 'axios';
 
     // const { data, loading, error, reFetch } = useFetch(`/flights?city=${fromDestination}`)
     
-    const SearchResult = (from, to) => {
-        const [data, setData] = useState([])
-        const [loading, setLoading] = useState(false)
-        const [error, setError] = useState(false)
+    const SearchResult = (props) => {
+        // const [data, setData] = useState([])
+        // const [loading, setLoading] = useState(false)
+        // const [error, setError] = useState(false)
+        // console.log("search results for", props)
 
-        useEffect(() => {
-            const fetchData = async () =>{
-                setLoading(true)
-                try {
-                    // const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
-                    const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
-                    console.log(res.data);
-                    setData(res.data);
+        // console.log("inside search result",from,to)
+
+        // useEffect(() => {
+            
+                // try {
+                //     // const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+                //     // const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+                //     console.log("inside useeffect result",from,to)
+                //     const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: from, to_city: to}})
+                //     // const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Montgomery', to_city: 'Juneau'}})
+                //     // const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Juneau', to_city: 'Augusta'}})
+                //     // const res = await axios.get("https://iflydirectadminbuild.herokuapp.com/flights", {params: {from_city: 'Phoenix', to_city: 'Montgomery'}})                    
+                //     console.log(res.data);
+                //     setData(res.data);
                    
-                } catch (error){
-                    // setError(error)
-                }
-                setLoading(false)
-            };
-            fetchData();
-        }, [])
+                // } catch (error){
+                //     // setError(error)
+                // }
+                // setLoading(false)           
+            
+        // }, [])
+        
+        // var data2 = props.data?.filter(function (entry){
+        //     return props.data.from.from < entry.departure_date < props.data.from.to 
+        // });
         
 
   return (
     <div className="searchRes">
-        {loading ? (
+        {props.loading ? (
             "Please wait while we search for you."
-            ) : (
-            <>
-            {/* if there's a data, images.map and for each img, return div.  */}
-                {/* {data.filter((item)=>{
-                    [{fromDestination},
-                        {toDestination},
-                        {date}]
-                }).map((item)=> ( */}
-                {data.map((item)=> (
+            ) : (            
+                props.data?.map((item)=> (
                     <div className="searchItem" key={item._id}>
                     <img 
                         // src={img} 
@@ -87,9 +92,8 @@ import axios from 'axios';
                         </div>
                     </div>
                     <div className="searchResDetails"></div>
-                    </div>
-                ))}
-            </>
+                </div>
+            ))
         )}
     </div>
   )

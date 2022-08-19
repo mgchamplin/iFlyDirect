@@ -5,11 +5,12 @@ import Header from '../../components/header/Header'
 import Navbar from '../../components/navbar/Navbar'
 import "./list.css"
 import { DateRange } from 'react-date-range';
-// import useFetch from "../../hooks/useFetch"
+import flightService from "../../hooks/useFetch"
 import SearchResult from '../../components/searchResult/SearchResult';
 import axios from 'axios';
 
-const List = () => {
+const List = (props,state) => {
+  // console.log(props,state, 'list')
   // useLocation hook returns the current location object. Performs some side effect whenever the current location changes.
   const location = useLocation()
   //since it's not globally scoped, need to redefine states
@@ -20,8 +21,11 @@ const List = () => {
   const [openCalendar, setOpenCalendar] = useState(false)
   const [guests,setGuests] = useState(location.state.guests)
 
+          
+  const [loading, setLoading] = useState(false)
+  // const [error, setError] = useState(false)
 
-  const [data,setData] = useState()
+  const [data,setData] = useState([])
   const navigate = useNavigate ()
 
   //shove changes to /flights(<List />)
@@ -29,28 +33,41 @@ const List = () => {
   const toDestRef = useRef(null);
   
   function handleSearch() {
-    fromDestRef.current.value = document.getElementById('newFromDest').value;
-    toDestRef.current.value = document.getElementById('newToDest').value;
+    fetchData()
+    // fromDestRef.current.value = document.getElementById('newFromDest').value;
+    // toDestRef.current.value = document.getElementById('newToDest').value;
   }
 
-
-  useEffect(() => {
-    const fetchData = async () =>{
-        // setLoading(true)
-        try {
-            const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
-            console.log(res.data);
-            setData(res.data);
-           
-        } catch (error){
-            // setError(error)
-        }
-    //     setLoading(false)
-    };
-    fetchData();
-}, [])
-
+  const fetchData = async () =>{
+    setLoading(true); 
+    flightService('/flights', fromDestination, toDestination)
+    .then((res) =>{
+      // console.log(res)
+        setData(res)
+      // console.log(data)
+        setLoading(false)
+    });
+  }
   
+  useEffect(()=>{
+    fetchData()
+  },[])
+
+//   useEffect(() => {
+//     const fetchData = async () =>{
+//         // setLoading(true)
+//         try {
+//             const res = await axios.get("http://localhost:9000/flights", {params: {from_city: 'Phoenix', to_city: 'Augusta'}})
+//             console.log(res.data);
+//             setData(res.data);
+           
+//         } catch (error){
+//             // setError(error)
+//         }
+//     //     setLoading(false)
+//     };
+//     fetchData();
+// }, [])  
 
   // const { data, loading, error } = useFetch("/flights")
 
@@ -68,9 +85,9 @@ const List = () => {
               <h1 className="listTitle"> Search </h1>
               <div className="listItem">
                 <label> From Location </label>
-                <input placeholder={fromDestination} type="text" ref={fromDestRef} id="newFromDest"/>
+                <input placeholder={fromDestination} type="text" onChange={(e)=>{setFromDestination(e.target.value)}} id="newFromDest"/>
                 <label> To Destination </label>
-                <input placeholder={toDestination} type="text" ref={toDestRef} id="newToDest"/>
+                <input placeholder={toDestination} type="text" onChange={(e)=>{setToDestination(e.target.value)}} id="newToDest"/>
               </div>
               <div className="listItem">
                 <label> Departure date </label>
@@ -117,7 +134,7 @@ const List = () => {
               {/* </Link> */}
             </div>
               <div className="listResult">
-              <SearchResult from={fromDestination} to={toDestination}/>
+              <SearchResult data={data} loading={loading}/>
               {/* {data.map((item)=> (
                 <SearchResult item={item} key={item._id}/>
                 ))} */}
